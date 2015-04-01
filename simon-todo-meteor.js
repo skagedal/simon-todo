@@ -28,7 +28,11 @@ if (Meteor.isClient) {
 
   Template.body.helpers({
     tasks: function () {
-      return Tasks.find({});
+      return Tasks.find({ finishedAt: null},
+                        { sort: { priority: -1}});
+    },
+    finishedTasks: function () {
+      return Tasks.find({ finishedAt: { $ne: null } });
     }
   });
 
@@ -61,6 +65,12 @@ if (Meteor.isClient) {
 
       // Prevent default form submit
       return false;
+    }
+  });
+
+  Template.task.events({
+    "click .done": function () {
+      Tasks.update(this._id, {$set: {finishedAt: new Date()}});
     }
   });
 }

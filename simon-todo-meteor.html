@@ -17,6 +17,13 @@
       {{> task}}
       {{/each}}
     </table>
+
+    <h2>Gjorda grejer</h2>
+    <table>
+      {{#each finishedTasks}}
+      {{> task}}
+      {{/each}}
+    </table>
   </div>
 </body>
 
@@ -25,6 +32,7 @@
     <td>{{tags}}</td>
     <td>{{shortdesc}}</td>
     <td><button class="prio_up">Upp</button></td>
+    <td>{{priority}}</td>
     <td><button class="prio_down">Ner</button></td>
     <td>{{formatDate updatedAt}}</td>
     <td><button class="done">Klart!</button></td>
