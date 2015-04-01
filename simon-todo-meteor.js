@@ -31,6 +31,9 @@ if (Meteor.isClient) {
       return Tasks.find({ finishedAt: null},
                         { sort: { priority: -1}});
     },
+    incompleteCount: function () {
+      return Tasks.find({ finishedAt: null }).count();
+    },
     finishedTasks: function () {
       return Tasks.find({ finishedAt: { $ne: null } });
     }
