@@ -84,6 +84,10 @@ if (Meteor.isClient) {
       Tasks.update(this._id, {$inc: {priority: -1}});
     },
   });
+
+  Accounts.ui.config({
+    passwordSignupFields: "USERNAME_ONLY"
+  });
 }
 
 if (Meteor.isServer) {

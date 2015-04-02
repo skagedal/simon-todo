@@ -9,3 +9,5 @@ autopublish
 insecure
 momentjs:moment
 mike:mocha
+accounts-ui
+accounts-password

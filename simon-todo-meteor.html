@@ -5,12 +5,17 @@
 <body>
   <div class="container">
     <header>
+      <div class="login">
+	{{> loginButtons}}
+      </div>
+
       <h1>Simon's Tasks ({{incompleteCount}})</h1>
 
       <form class="new-task">
         <input type="text" name="text" placeholder="Skriv något att göra" />
       </form>
     </header>
+    
 
     <table>
       {{#each tasks}}
