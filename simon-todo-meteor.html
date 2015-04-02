@@ -1,11 +1,11 @@
 <head>
-  <title>Simon's To-Dos</title>
+  <title>Simon's Tasks</title>
 </head>
 
 <body>
   <div class="container">
     <header>
-      <h1>Simon's To-Dos ({{incompleteCount}})</h1>
+      <h1>Simon's Tasks ({{incompleteCount}})</h1>
 
       <form class="new-task">
         <input type="text" name="text" placeholder="Skriv något att göra" />
@@ -17,7 +17,6 @@
       {{> task}}
       {{/each}}
     </table>
-
     <h2>Gjorda grejer</h2>
     <table>
       {{#each finishedTasks}}
@@ -31,9 +30,9 @@
   <tr>
     <td>{{tags}}</td>
     <td>{{shortdesc}}</td>
-    <td><button class="prio_up">Upp</button></td>
+    <td><button class="prio_up">+</button></td>
     <td>{{priority}}</td>
-    <td><button class="prio_down">Ner</button></td>
+    <td><button class="prio_down">&minus;</button></td>
     <td>{{formatDate updatedAt}}</td>
     <td><button class="done">Klart!</button></td>
   </tr>

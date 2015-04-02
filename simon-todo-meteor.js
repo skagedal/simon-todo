@@ -74,7 +74,15 @@ if (Meteor.isClient) {
   Template.task.events({
     "click .done": function () {
       Tasks.update(this._id, {$set: {finishedAt: new Date()}});
-    }
+    },
+    "click .prio_up": function () {
+      // FIXME should be capped (on server)
+      Tasks.update(this._id, {$inc: {priority: 1}});
+    },
+    "click .prio_down": function () {
+      // FIXME should be capped (on server)
+      Tasks.update(this._id, {$inc: {priority: -1}});
+    },
   });
 }
 
