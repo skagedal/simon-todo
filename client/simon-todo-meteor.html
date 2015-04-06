@@ -1,0 +1,45 @@
+<head>
+  <title>Simon's Tasks</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="login">
+	{{> loginButtons}}
+      </div>
+
+      <h1>Simon's Tasks ({{incompleteCount}})</h1>
+
+      <form class="new-task">
+        <input type="text" name="text" placeholder="Skriv något att göra" />
+      </form>
+    </header>
+    
+
+    <table>
+      {{#each tasks}}
+      {{> task}}
+      {{/each}}
+    </table>
+    <h2>Gjorda grejer</h2>
+    <table>
+      {{#each finishedTasks}}
+      {{> task}}
+      {{/each}}
+    </table>
+  </div>
+</body>
+
+<template name="task">
+  <tr>
+    <td>{{tags}}</td>
+    <td>{{shortdesc}}</td>
+    <td><button class="prio_up">+</button></td>
+    <td>{{priority}}</td>
+    <td><button class="prio_down">&minus;</button></td>
+    <td>{{formatDate updatedAt}}</td>
+    <td><button class="done">Klart!</button></td>
+  </tr>
+</template>
+
