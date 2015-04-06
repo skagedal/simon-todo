@@ -1,5 +1,3 @@
-Tasks = new Mongo.Collection("tasks");
-
 if (Meteor.isClient) {
 
   Meteor.subscribe("tasks");
@@ -70,11 +68,3 @@ if (Meteor.isClient) {
   });
 }
 
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
-  Meteor.publish("tasks", function () {
-    return Tasks.find();
-  });
-}
