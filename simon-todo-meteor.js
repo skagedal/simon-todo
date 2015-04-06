@@ -22,6 +22,9 @@ function parseTodo (text) {
 }
 
 if (Meteor.isClient) {
+
+  Meteor.subscribe("tasks");
+
   Template.registerHelper('formatDate', function(date) {
     return moment(date).format('YYYY-MM-DD');
   });
@@ -93,5 +96,8 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
+  });
+  Meteor.publish("tasks", function () {
+    return Tasks.find();
   });
 }
