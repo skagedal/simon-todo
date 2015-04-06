@@ -1,26 +1,5 @@
 Tasks = new Mongo.Collection("tasks");
 
-function parseTodo (text) {
-    var reTags = /\[([^\]]*)\]/g;
-    var tags = [], matches;
-    while (matches = reTags.exec(text)) {
-        var betweenBrackets = matches[1];
-        var someTags = betweenBrackets.split(",");
-        var n = someTags.length;
-        for (i = 0; i < n; i++)
-            tags.push(someTags[i].trim());
-    }
-
-    var rePrio = /\(([0-9])\)/;
-    var prioMatch, prio = null;
-    if (prioMatch = text.match(rePrio))
-        prio = +prioMatch[1];
-
-    text = text.replace(reTags, '').replace(rePrio, '').trim();
-
-    return {tags: tags, prio: prio, text: text};
-}
-
 if (Meteor.isClient) {
 
   Meteor.subscribe("tasks");
@@ -52,9 +31,7 @@ if (Meteor.isClient) {
     "submit .new-task": function (event) {
       // This function is called when the new task form is submitted
 
-      console.log("calling parseTodo");
-      var data = parseTodo(event.target.text.value);
-      console.log("and now i have");
+      var data = Util.parseTodo(event.target.text.value);
 
       var justNow = new Date();
       Tasks.insert({
