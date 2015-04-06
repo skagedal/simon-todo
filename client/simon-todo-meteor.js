@@ -1,5 +1,3 @@
-Tasks = new Mongo.Collection("tasks");
-
 Meteor.subscribe("tasks");
 
 Template.registerHelper('formatDate', function(date) {
