@@ -29,15 +29,7 @@ Template.body.events({
 
     var data = Util.parseTodo(event.target.text.value);
 
-    var justNow = new Date();
-    Tasks.insert({
-      text: data.text,
-      tags: data.tags,
-      createdAt: justNow,
-      updatedAt: justNow,
-      finishedAt: null,
-      priority: data.prio === null ? 5 : data.prio,
-    });
+    Meteor.call("addTask", data.text, data.tags, data.pro);
 
     // Clear form
     event.target.text.value = "";
@@ -49,15 +41,13 @@ Template.body.events({
 
 Template.task.events({
   "click .done": function () {
-    Tasks.update(this._id, {$set: {finishedAt: new Date()}});
+    Meteor.call("setFinished", this._id);
   },
   "click .prio_up": function () {
-    // FIXME should be capped (on server)
-    Tasks.update(this._id, {$inc: {priority: 1}});
+    Meteor.call("increasePriority", this._id);
   },
   "click .prio_down": function () {
-    // FIXME should be capped (on server)
-    Tasks.update(this._id, {$inc: {priority: -1}});
+    Meteor.call("decreasePriority", this._id);
   },
 });
 
