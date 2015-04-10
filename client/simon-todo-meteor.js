@@ -29,7 +29,7 @@ Template.body.events({
 
     var data = Util.parseTodo(event.target.text.value);
 
-    Meteor.call("addTask", data.text, data.tags, data.pro);
+    Meteor.call("addTask", data.text, data.tags, data.prio);
 
     // Clear form
     event.target.text.value = "";
