@@ -18,7 +18,4 @@ rescue Errno::ENOENT
 end
 
 system("mmongo dump -o #{outdir}")
-
-
-
-
+system("mmongo export -c tasks -o #{outdir}/tasks.json")
